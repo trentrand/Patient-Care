@@ -27,7 +27,7 @@ Patient Care documentation is hosted in the wiki. If there is an inaccuracy in t
 
 Please read through the [contributing guidelines]. Included are directions for opening issues, coding standards, and notes on development.
  
-### Author
+### Authors
 
 Patient Care is developed by the following people:
 
