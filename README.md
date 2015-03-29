@@ -14,6 +14,7 @@ Patient Care uses the following open source projects to work properly:
 ### Installation
 
 * Open with Android Studio and run with Simulator to test
+* Application functionality can be tested with the credentials: testemail / testpasword
 
 ### Documentation
 
