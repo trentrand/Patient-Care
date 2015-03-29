@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">PatientCare</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="descLogo">Application logo</string>
+    <string name="hintemail">Email</string>
+    <string name="hintPassword">Password</string>
+    <string name="btnLogin">Sign In</string>
+    <string name="btnForgotPassword">Forgot Password?</string>
 </resources>
