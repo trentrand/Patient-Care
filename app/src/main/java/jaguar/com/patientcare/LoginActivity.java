@@ -49,10 +49,17 @@ public class LoginActivity extends ActionBarActivity {
             }
         });
 
-        // Enable Local Datastore.
+        // Enable local datastore feature
         Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
+
+        // Register application to log app opens
         ParseAnalytics.trackAppOpened(getIntent());
+
+        // Register custom ParseObject subclasses
+        ParseObject.registerSubclass(Symptoms.class);
+
+        // Initialize Parse
+        Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
 
         // See if we can skip the login view by checking for a cached user session
         ParseUser currentUser = ParseUser.getCurrentUser();
