@@ -19,6 +19,7 @@ public class LoginActivity extends ActionBarActivity {
     private Button btnLogin;
     private Button btnForgotPassword;
 
+    // Holds copy of text from EditText fields
     private String email;
     private String password;
 
@@ -51,6 +52,13 @@ public class LoginActivity extends ActionBarActivity {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
+        ParseAnalytics.trackAppOpened(getIntent());
+
+        // See if we can skip the login view by checking for a cached user session
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // TODO switch to next screen
+        }
     }
 
 
@@ -116,7 +124,7 @@ public class LoginActivity extends ActionBarActivity {
                 if (user != null) {
                     // User is logged in successfully
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-                    // TODO cache session token (if required?) and switch to next screen
+                    // TODO switch to next screen
                 } else {
                     // Login failed. Details found in <e: ParseException>
                     // TODO make a displayErrorMessage(Exception e) method - pass, format and Toast the e.getLocalizedMessage()
