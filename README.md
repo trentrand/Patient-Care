@@ -3,7 +3,8 @@ __Android application to allow patients to directly communicate with their healt
 
 
 ### Version
-* __0.2 - Functional login view implemented__
+* __0.3 - Functional symptoms rating view implemented__
+* 0.2 - Functional login view implemented
 * 0.1 - Base project w/ dependencies
 
 ### Dependencies
