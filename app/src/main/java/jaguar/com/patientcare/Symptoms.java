@@ -22,6 +22,12 @@ import com.parse.ParseUser;
 @ParseClassName("Symptoms")
 public class Symptoms extends ParseObject {
 
+    // Reference to linked User
+    private ParseUser referencedUser;
+
+    // Int array of Symptoms rating
+    private int[] symptomRatings = new int[9];
+
     // Accessor methods for associated User
     public ParseUser getUser() {
         return getParseUser("user");
@@ -29,6 +35,7 @@ public class Symptoms extends ParseObject {
 
     public void setUser(ParseUser user) {
         put ("user", user);
+        referencedUser = user;
     }
 
     // Accessor methods for Pain level
@@ -38,6 +45,7 @@ public class Symptoms extends ParseObject {
 
     public void setPainLevel(int painLevel) {
         put ("painLevel", painLevel);
+        symptomRatings[0] = painLevel;
     }
 
     // Accessor methods for Fatigue level
@@ -47,6 +55,7 @@ public class Symptoms extends ParseObject {
 
     public void setFatigueLevel(int fatigueLevel) {
         put ("fatigueLevel", fatigueLevel);
+        symptomRatings[1] = fatigueLevel;
     }
     // Accessor methods for Numbness level
     public int getNumbnessLevel() {
@@ -55,6 +64,7 @@ public class Symptoms extends ParseObject {
 
     public void setNumbnessLevel(int numbnessLevel) {
         put ("numbnessLevel", numbnessLevel);
+        symptomRatings[2] = numbnessLevel;
     }
     // Accessor methods for Spasticity level
     public int getSpasticityLevel() {
@@ -63,6 +73,7 @@ public class Symptoms extends ParseObject {
 
     public void setSpasticityLevel(int spasticityLevel) {
         put ("spasticityLevel", spasticityLevel);
+        symptomRatings[3] = spasticityLevel;
     }
     // Accessor methods for Vision Problem level
     public int getVisionLevel() {
@@ -71,6 +82,7 @@ public class Symptoms extends ParseObject {
 
     public void setVisionLevel(int visionLevel) {
         put ("visionLevel", visionLevel);
+        symptomRatings[4] = visionLevel;
     }
     // Accessor methods for Dizziness level
     public int getDizzinessLevel() {
@@ -79,6 +91,7 @@ public class Symptoms extends ParseObject {
 
     public void setDizzinessLevel(int dizzinessLevel) {
         put ("dizzinessLevel", dizzinessLevel);
+        symptomRatings[5] = dizzinessLevel;
     }
     // Accessor methods for Bladder level
     public int getBladderLevel() {
@@ -87,6 +100,7 @@ public class Symptoms extends ParseObject {
 
     public void setBladderLevel(int bladderLevel) {
         put ("bladderLevel", bladderLevel);
+        symptomRatings[6] = bladderLevel;
     }
     // Accessor methods for Cognitive level
     public int getCognitiveLevel() {
@@ -95,6 +109,7 @@ public class Symptoms extends ParseObject {
 
     public void setCognitiveLevel(int cognitiveLevel) {
         put ("cognitiveLevel", cognitiveLevel);
+        symptomRatings[7] = cognitiveLevel;
     }
     // Accessor methods for Emotional level
     public int getEmotionalLevel() {
@@ -103,6 +118,7 @@ public class Symptoms extends ParseObject {
 
     public void setEmotionalLevel(int emotionalLevel) {
         put ("emotionalLevel", emotionalLevel);
+        symptomRatings[8] = emotionalLevel;
     }
 
 
