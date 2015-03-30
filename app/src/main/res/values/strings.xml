@@ -10,4 +10,6 @@
     <string name="title_activity_symptoms">SymptomsActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="Next">Next</string>
+    <string name="Done">Done</string>
 </resources>
