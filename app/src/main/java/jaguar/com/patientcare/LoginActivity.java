@@ -1,5 +1,6 @@
 package jaguar.com.patientcare;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -52,8 +53,7 @@ public class LoginActivity extends ActionBarActivity {
         // Enable local datastore feature
         Parse.enableLocalDatastore(this);
 
-        // Register application to log app opens
-        ParseAnalytics.trackAppOpened(getIntent());
+
 
         // Register custom ParseObject subclasses
         ParseObject.registerSubclass(Symptoms.class);
@@ -61,10 +61,14 @@ public class LoginActivity extends ActionBarActivity {
         // Initialize Parse
         Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
 
+        // Register application to log app opens
+        ParseAnalytics.trackAppOpened(getIntent());
+
         // See if we can skip the login view by checking for a cached user session
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            // TODO switch to next screen
+            Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+            startActivity(symptomsIntent);
         }
     }
 
@@ -131,7 +135,8 @@ public class LoginActivity extends ActionBarActivity {
                 if (user != null) {
                     // User is logged in successfully
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-                    // TODO switch to next screen
+                    Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+                    startActivity(symptomsIntent);
                 } else {
                     // Login failed. Details found in <e: ParseException>
                     // TODO make a displayErrorMessage(Exception e) method - pass, format and Toast the e.getLocalizedMessage()

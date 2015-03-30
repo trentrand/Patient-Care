@@ -7,4 +7,7 @@
     <string name="hintPassword">Password</string>
     <string name="btnLogin">Sign In</string>
     <string name="btnForgotPassword">Forgot Password?</string>
+    <string name="title_activity_symptoms">SymptomsActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
