@@ -53,8 +53,6 @@ public class LoginActivity extends ActionBarActivity {
         // Enable local datastore feature
         Parse.enableLocalDatastore(this);
 
-
-
         // Register custom ParseObject subclasses
         ParseObject.registerSubclass(Symptoms.class);
 
@@ -106,14 +104,12 @@ public class LoginActivity extends ActionBarActivity {
 
         // Check if both credentials are entered. Error check
         if (email.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter your Email", Toast.LENGTH_LONG).show();
-            // TODO can we highlight/shake the EditText we are referring to?
+            txtEmail.setError("Please enter your email address");
             //End the method early before we attempt standard login
             return;
         }
         if (password.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter your Password", Toast.LENGTH_LONG).show();
-            // TODO can we highlight/shake the EditText we are referring to?
+            txtPassword.setError("Please enter your password");
             //End the method early before we attempt standard login
             return;
         }
@@ -134,13 +130,12 @@ public class LoginActivity extends ActionBarActivity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // User is logged in successfully
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                     Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
                     startActivity(symptomsIntent);
+                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
                 } else {
                     // Login failed. Details found in <e: ParseException>
-                    // TODO make a displayErrorMessage(Exception e) method - pass, format and Toast the e.getLocalizedMessage()
-                    Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    toastExceptionObject(e);
                 }
             }
         });
@@ -156,8 +151,7 @@ public class LoginActivity extends ActionBarActivity {
 
         // Check if an email address was entered. Error check
         if (email.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please enter your Email for password recovery", Toast.LENGTH_LONG).show();
-            // TODO can we highlight/shake the EditText we are referring to?
+            txtEmail.setError("Please enter your email for password recovery");
             //End the method early before we attempt standard login
             return;
         }
@@ -181,11 +175,21 @@ public class LoginActivity extends ActionBarActivity {
                             btnForgotPassword.setEnabled(false);
                         } else {
                             // Password recovery failed. Details found in <e: ParseException>
-                            // TODO make a displayErrorMessage(Exception e) method - pass, format and Toast the e.getLocalizedMessage()
-                            Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                            toastExceptionObject(e);
                         }
                     }
                 });
     }
 
+
+    private void toastExceptionObject(Exception e) {
+        // Retrieve error message from e : Exception
+        String errorMessage = e.getLocalizedMessage();
+
+        // Capitalize the first letter
+        errorMessage = errorMessage.substring(0, 1).toUpperCase() + errorMessage.substring(1, errorMessage.length());
+
+        // Display toast with error message
+        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+    }
 }
