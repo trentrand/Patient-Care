@@ -42,7 +42,7 @@ Patient Care is developed by the following people:
 
 ### Issues
 
-If you find any issues with the Patient Care application, please let open an issue using the GitHub issues tracker.
+If you find any issues with the Patient Care application, please open an issue using the GitHub issues tracker.
 
 ### License
 
