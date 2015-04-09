@@ -21,14 +21,12 @@ import com.parse.RequestPasswordResetCallback;
 public class PatientMenuActivity extends ActionBarActivity {
 
     // Pointer to UI elements
-    private EditText txtEmail;
-    private EditText txtPassword;
-    private Button btnLogin;
-    private Button btnForgotPassword;
+    private Button btnEmergency;
+    private Button btnInputPainLevels;
+    private Button btnViewPastRecords;
 
-    // Holds copy of text from EditText fields
-    private String email;
-    private String password;
+    // Holds user's information
+    private ParseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +34,8 @@ public class PatientMenuActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
 
         // Initialize pointer to UI elements
-        txtEmail = (EditText) findViewById(R.id.txtemail);
-        txtPassword = (EditText) findViewById(R.id.txtPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnForgotPassword = (Button) findViewById(R.id.btnForgotPassword);
+        //btnLogin = (Button) findViewById(R.id.btnLogin);
+        //btnForgotPassword = (Button) findViewById(R.id.btnForgotPassword);
 
         // Enable local datastore feature
         Parse.enableLocalDatastore(this);
@@ -82,5 +78,17 @@ public class PatientMenuActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnEmergency(){
+
+    }
+
+    public void btnInputPainLevels(/*Patient pat*/){
+
+    }
+
+    public void btnViewPastRecords(/*Patient pat*/){
+
     }
 }
