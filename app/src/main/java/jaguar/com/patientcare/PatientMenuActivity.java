@@ -84,11 +84,11 @@ public class PatientMenuActivity extends ActionBarActivity {
 
     }
 
-    public void btnInputPainLevels(/*Patient pat*/){
+    public void btnInputPainLevels(){
 
     }
 
-    public void btnViewPastRecords(/*Patient pat*/){
+    public void btnViewPastRecords(){
 
     }
 }
