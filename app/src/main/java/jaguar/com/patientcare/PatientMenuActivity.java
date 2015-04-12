@@ -31,30 +31,54 @@ public class PatientMenuActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.patient_menu_activity);
 
         // Initialize pointer to UI elements
-        //btnLogin = (Button) findViewById(R.id.btnLogin);
-        //btnForgotPassword = (Button) findViewById(R.id.btnForgotPassword);
+        btnEmergency = (Button) findViewById(R.id.btnEmergency);
+        btnInputPainLevels = (Button) findViewById(R.id.btnInputPainLevels);
+        btnViewPastRecords = (Button) findViewById(R.id.btnViewPastRecords);
 
-        // Enable local datastore feature
-        Parse.enableLocalDatastore(this);
+        // Declare UI element event handlers
+        btnEmergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEmergency();
+            }
+        });
 
-        // Register custom ParseObject subclasses
-        ParseObject.registerSubclass(Symptoms.class);
+        btnInputPainLevels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnInputPainLevels();
+            }
+        });
 
-        // Initialize Parse
-        Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
+        btnViewPastRecords.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnViewPastRecords();
+            }
+        });
 
-        // Register application to log app opens
-        ParseAnalytics.trackAppOpened(getIntent());
-
-        // See if we can skip the login view by checking for a cached user session
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
-            startActivity(symptomsIntent);
-        }
+        //Things copied from Trent's Work :P
+//        // Enable local datastore feature
+//        Parse.enableLocalDatastore(this);
+//
+//        // Register custom ParseObject subclasses
+//        ParseObject.registerSubclass(Symptoms.class);
+//
+//        // Initialize Parse
+//        Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
+//
+//        // Register application to log app opens
+//        ParseAnalytics.trackAppOpened(getIntent());
+//
+//        // See if we can skip the login view by checking for a cached user session
+//        ParseUser currentUser = ParseUser.getCurrentUser();
+//        if (currentUser != null) {
+//            Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+//            startActivity(symptomsIntent);
+//        }
     }
 
 
@@ -81,14 +105,20 @@ public class PatientMenuActivity extends ActionBarActivity {
     }
 
     public void btnEmergency(){
-
+        //stuff about notifying doctors
+//        Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+//        startActivity(symptomsIntent);
     }
 
     public void btnInputPainLevels(){
-
+        //goto symptoms activity screen!
+        Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+        startActivity(symptomsIntent);
     }
 
     public void btnViewPastRecords(){
-
+        //view past history stuff.
+//        Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
+//        startActivity(symptomsIntent);
     }
 }

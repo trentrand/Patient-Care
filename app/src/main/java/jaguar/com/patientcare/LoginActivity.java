@@ -65,8 +65,8 @@ public class LoginActivity extends ActionBarActivity {
         // See if we can skip the login view by checking for a cached user session
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
-            startActivity(symptomsIntent);
+            Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
+            startActivity(patientMenuIntent);
         }
     }
 
@@ -130,8 +130,8 @@ public class LoginActivity extends ActionBarActivity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // User is logged in successfully
-                    Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
-                    startActivity(symptomsIntent);
+                    Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
+                    startActivity(patientMenuIntent);
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
                 } else {
                     // Login failed. Details found in <e: ParseException>

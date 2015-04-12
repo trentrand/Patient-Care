@@ -20,6 +20,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PatientMenuActivity"
+            android:label="@string/title_activity_symptoms" >
+        </activity>
+        <activity
             android:name=".SymptomsActivity"
             android:label="@string/title_activity_symptoms" >
         </activity>
