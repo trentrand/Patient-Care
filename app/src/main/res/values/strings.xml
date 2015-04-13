@@ -12,4 +12,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="Next">Next</string>
     <string name="Done">Done</string>
+    
+    <string-array name="user_types">
+        <item>Patient</item>
+        <item>Doctor</item>
+        <item>Admin</item>
+    </string-array>
 </resources>
