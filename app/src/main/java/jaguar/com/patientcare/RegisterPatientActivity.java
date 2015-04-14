@@ -21,12 +21,13 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	//Stores input from the EditText fields
     private String email;
     private String password;
+    private String userType;
 	
 	//Pointer to UI elements
     private EditText txtEmail;
     private EditText txtPassword;
     private Button btnRegister;
-    //private Spinner spnUserType;
+    private Spinner spnUserType;
     
     //the new ParseUser
     private ParseUser user;
@@ -40,7 +41,7 @@ public class RegisterPatientActivity extends ActionBarActivity{
         txtEmail = (EditText) findViewById(R.id.regEmail);
         txtPassword = (EditText) findViewById(R.id.regPassword);
         btnRegister = (Button) findViewById(R.id.regButton);
-        //spnUserType = (Spinner) findViewById(R.id.regSpinner);
+        spnUserType = (Spinner) findViewById(R.id.regSpinner);
         
         //calls btnRegister() if the 'Register' button is pressed
         btnRegister.setOnClickListener(new View.OnClickListener(){
@@ -49,7 +50,13 @@ public class RegisterPatientActivity extends ActionBarActivity{
 		        btnRegister();
 	        }
         });
-        
+
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.user_types, R.layout.activity_register_patient);
+
+        adapter.setDropDownViewResource(R.layout.activity_register_patient);
+
+        spnUserType.setAdapter(adapter);*/
+
         //Initializes the correct Parse database
         Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
     }
@@ -72,7 +79,6 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    if(id == R.id.action_settings){
 		    return true;
 	    }
-	    
 	    return super.onOptionsItemSelected(item);
     }
 
@@ -82,6 +88,7 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    //get text from EditText fields
 	    email = txtEmail.getText().toString().trim();
 	    password = txtPassword.getText().toString().trim();
+        userType = spnUserType.getSelectedItem().toString();
 	    
 	    //makes sure both fields are filled
 	    if(email.isEmpty()){
@@ -96,10 +103,6 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    registerPatient(email, password); //register user if all fields are filled
     }
 
-    //public void spnUserType(){
-        //spinner stuff
-    //}
-    
     //creates a new ParseUser with the entered credentials
     public void registerPatient(String em, String pass){
 	    
@@ -110,8 +113,8 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    user.setUsername(em);
 	    user.setEmail(em);
 	    user.setPassword(pass);
-        //user.put("userType", 1);
-        
+        user.put("userType", userType);
+
         //returns to a blank registration page if the user was
         //successfully made, throws an exception otherwise
         user.signUpInBackground(new SignUpCallback() {

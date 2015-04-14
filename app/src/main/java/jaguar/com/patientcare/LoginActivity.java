@@ -130,8 +130,14 @@ public class LoginActivity extends ActionBarActivity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // User is logged in successfully
-                    Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
-                    startActivity(patientMenuIntent);
+                    if(user.get("userType").toString().trim().equals("Admin")){ //goes to RegisterPatientActivity if user == admin
+                        Intent registerIntent = new Intent(getApplicationContext(),RegisterPatientActivity.class);
+                        startActivity(registerIntent);
+                    }
+                    else{ //goes to PatientMenuActivity if user != admin
+                        Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
+                        startActivity(patientMenuIntent);
+                    }
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
                 } else {
                     // Login failed. Details found in <e: ParseException>

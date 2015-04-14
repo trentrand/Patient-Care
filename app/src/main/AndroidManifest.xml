@@ -27,6 +27,10 @@
             android:name=".SymptomsActivity"
             android:label="@string/title_activity_symptoms" >
         </activity>
+        <activity
+            android:name=".RegisterPatientActivity"
+            android:label="@string/title_activity_register_patient" >
+        </activity>
     </application>
 
 </manifest>

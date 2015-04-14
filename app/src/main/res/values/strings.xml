@@ -18,5 +18,5 @@
         <item>Doctor</item>
         <item>Admin</item>
     </string-array>
-    <string name="title_activity_reg_test">RegTest</string>
+    <string name="title_activity_register_patient">RegisterPatientActivity</string>
 </resources>
