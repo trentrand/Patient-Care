@@ -11,19 +11,24 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.EditText;
 
-import com.parse.ParseUser;
 import com.parse.*;
 
 /**
  * Created by graemedrucker on 4/13/15.
  */
 public class RegisterPatientActivity extends ActionBarActivity{
+	
+	//Stores input from the EditText fields
     private String email;
     private String password;
+	
+	//Pointer to UI elements
     private EditText txtEmail;
     private EditText txtPassword;
     private Button btnRegister;
     //private Spinner spnUserType;
+    
+    //the new ParseUser
     private ParseUser user;
 
     @Override
@@ -31,23 +36,27 @@ public class RegisterPatientActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_patient);
         
+        //Initialze pointer to UI elements
         txtEmail = (EditText) findViewById(R.id.regEmail);
         txtPassword = (EditText) findViewById(R.id.regPassword);
         btnRegister = (Button) findViewById(R.id.regButton);
         //spnUserType = (Spinner) findViewById(R.id.regSpinner);
-
+        
+        //calls btnRegister() if the 'Register' button is pressed
         btnRegister.setOnClickListener(new View.OnClickListener(){
 	        @Override
 	        public void onClick(View v){
 		        btnRegister();
 	        }
         });
-
+        
+        //Initializes the correct Parse database
         Parse.initialize(this, "VewvxmlYofAlQkLcRUZjjfJSVf0U9WKeWpWcqfwJ", "K8hbr0l4agNpyJKvRvhmjEBSgkPcvTNrqTVYmxz8");
     }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
+	    // Inflate the menu; this adds items to the action bar if it is present.
 	    getMenuInflater().inflate(R.menu.menu_register, menu);
 	    return true;
     }
@@ -67,6 +76,8 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    return super.onOptionsItemSelected(item);
     }
 
+    //gets the text from EditText fields and calls registerPatient() with them
+    //as arguments when the 'Register' button is pressed
     public void btnRegister(){
 	    //get text from EditText fields
 	    email = txtEmail.getText().toString().trim();
@@ -89,20 +100,30 @@ public class RegisterPatientActivity extends ActionBarActivity{
         //spinner stuff
     //}
     
+    //creates a new ParseUser with the entered credentials
     public void registerPatient(String em, String pass){
+	    
+	    //creates the new ParseUser
 	    user = new ParseUser();
+	    
+	    //sets the username, password, and email
 	    user.setUsername(em);
 	    user.setEmail(em);
 	    user.setPassword(pass);
-
+        //user.put("userType", 1);
+        
+        //returns to a blank registration page if the user was
+        //successfully made, throws an exception otherwise
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                     Intent registerIntent = new Intent(getApplicationContext(),RegisterPatientActivity.class);
                     startActivity(registerIntent);
+                    
+                    //display 'Success' toast
                     Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
                 } else {
-                    toastExceptionObject(e);
+                    toastExceptionObject(e); //throw exception
                 }
             }
         });
