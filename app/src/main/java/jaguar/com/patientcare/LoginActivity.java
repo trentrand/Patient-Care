@@ -130,7 +130,7 @@ public class LoginActivity extends ActionBarActivity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // User is logged in successfully
-                    if(user.get("userType").toString().trim().equals("Admin")){ //goes to RegisterPatientActivity if user == admin
+                    if(user.get("userType") == 2){ //goes to RegisterPatientActivity if user == admin
                         Intent registerIntent = new Intent(getApplicationContext(),RegisterPatientActivity.class);
                         startActivity(registerIntent);
                     }

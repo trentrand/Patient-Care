@@ -109,12 +109,24 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    //creates the new ParseUser
 	    user = new ParseUser();
 	    
-	    //sets the username, password, and email
+	    //sets the username, password, email, and userType
 	    user.setUsername(em);
 	    user.setEmail(em);
 	    user.setPassword(pass);
-        user.put("userType", userType);
-
+        switch (userType){
+            case "Patient":
+                user.put("userType", 0);
+                break;
+            case "Doctor":
+                user.put("userType", 1);
+                break;
+            case "Admin":
+                user.put("userType", 0);
+                break;
+            default:
+                user.put("userType", 0);
+                break;
+        }
         //returns to a blank registration page if the user was
         //successfully made, throws an exception otherwise
         user.signUpInBackground(new SignUpCallback() {
