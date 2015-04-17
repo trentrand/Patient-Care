@@ -65,8 +65,7 @@ public class LoginActivity extends ActionBarActivity {
         // See if we can skip the login view by checking for a cached user session
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
-            startActivity(patientMenuIntent);
+            determineLaunchpage(currentUser);
         }
     }
 
@@ -129,22 +128,33 @@ public class LoginActivity extends ActionBarActivity {
         ParseUser.logInInBackground(email, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
-                    // User is logged in successfully
-                    if(user.get("userType") == 2){ //goes to RegisterPatientActivity if user == admin
-                        Intent registerIntent = new Intent(getApplicationContext(),RegisterPatientActivity.class);
-                        startActivity(registerIntent);
-                    }
-                    else{ //goes to PatientMenuActivity if user != admin
-                        Intent patientMenuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
-                        startActivity(patientMenuIntent);
-                    }
                     Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                    determineLaunchpage(user);
                 } else {
                     // Login failed. Details found in <e: ParseException>
                     toastExceptionObject(e);
                 }
             }
         });
+    }
+
+    /**
+     * Determines which screen to present, dependent on user type
+     * @param user
+     */
+    public void determineLaunchpage(ParseUser user) {
+        // User is logged in successfully, decide what the present
+        if((int) user.get("userType") == 2){ //goes to RegisterPatientActivity if user == admin
+            Intent registerIntent = new Intent(getApplicationContext(), RegisterPatientActivity.class);
+            startActivity(registerIntent);
+        } else if ((int) user.get("userType") == 1) { //goes to PatientListActivity if user == doctor
+            Intent patientListIntent = new Intent(getApplicationContext(), PatientListActivity.class);
+            startActivity(patientListIntent);
+        }
+        else{ //goes to PatientMenuActivity if userType != admin/doctor
+            Intent patientMenuIntent = new Intent(getApplicationContext(), PatientMenuActivity.class);
+            startActivity(patientMenuIntent);
+        }
     }
 
     /**
