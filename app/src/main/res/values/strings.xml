@@ -19,4 +19,6 @@
         <item>Admin</item>
     </string-array>
     <string name="title_activity_register_patient">RegisterPatientActivity</string>
+    <string name="title_activity_patient_list">PatientListActivity</string>
+    <string name="title_activity_patient_summary">PatientSummaryActivity</string>
 </resources>
