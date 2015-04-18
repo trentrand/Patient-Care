@@ -31,7 +31,6 @@ public class PatientListActivity extends ActionBarActivity {
 
     private ParseQuery<ParseUser> query;
     private ListView listPatients;
-    private ArrayAdapter<String> listAdapter;
     private List<ParseUser> patients;
     private static ParseUser clickedUser;
 
@@ -110,14 +109,10 @@ public class PatientListActivity extends ActionBarActivity {
      * @param patientList
      */
     public void refreshDisplay(List<ParseUser> patientList) {
-        // Create Array to extract full name for table elements
-        ArrayList<String> patientsUsername = new ArrayList<String>();
-        for (ParseUser patient: patientList) {
-            patientsUsername.add(patient.getUsername());
-        }
-        // Create ArrayAdapter using the patientList.
-        listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, patientsUsername);
+        // Create custom PatientListAdapter using the patientList
+        PatientListAdapter listAdapter = new PatientListAdapter(this, patientList);
         // Set the ArrayAdapter as the ListView's adapter.
         listPatients.setAdapter(listAdapter);
+
     }
 }

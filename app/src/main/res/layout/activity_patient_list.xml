@@ -26,8 +26,10 @@
         android:divider="#ff5ea3ff"
         android:background="#ffffffff"
         android:dividerHeight="5px"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/txtPatientList"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

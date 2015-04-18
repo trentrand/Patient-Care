@@ -1,7 +1,33 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rowTextView"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:textSize="16sp" >
-</TextView>  
+    >
+
+    <TextView
+        android:id="@+id/lblFullname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingLeft="15dp"
+        android:textColor="#000000"
+        android:background="#FFFFFF"
+        android:text="Full Name"
+        android:paddingTop="5dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/lblSymptom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblFullname"
+        android:textSize="13sp"
+        android:paddingLeft="15dp"
+        android:textColor="#ffe93f33"
+        android:background="#FFFFFF"
+        android:text="Symptom"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="5dp">
+    </TextView>
+
+</RelativeLayout>
