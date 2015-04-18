@@ -133,7 +133,7 @@ public class RegisterPatientActivity extends ActionBarActivity{
                 user.put("userType", 1);
                 break;
             case "Admin":
-                user.put("userType", 0);
+                user.put("userType", 2);
                 break;
             default:
                 user.put("userType", 0);
