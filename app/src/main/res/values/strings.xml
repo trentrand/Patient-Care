@@ -4,6 +4,8 @@
     <string name="action_settings">Settings</string>
     <string name="descLogo">Application logo</string>
     <string name="hintemail">Email</string>
+    <string name="hintfirst">First Name</string>
+    <string name="hintlast">Last Name</string>
     <string name="hintPassword">Password</string>
     <string name="btnLogin">Sign In</string>
     <string name="btnForgotPassword">Forgot Password?</string>
