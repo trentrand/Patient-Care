@@ -1,5 +1,6 @@
 package jaguar.com.patientcare;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,5 +99,7 @@ public class SymptomsActivity extends ActionBarActivity {
         Toast.makeText(getApplicationContext(), "Symptoms saved to database", Toast.LENGTH_LONG).show();
         userSymptoms.saveInBackground();
         btnDone.setEnabled(false);
+        Intent menuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
+        startActivity(menuIntent);
     }
 }
