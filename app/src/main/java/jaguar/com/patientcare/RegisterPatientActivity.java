@@ -76,9 +76,18 @@ public class RegisterPatientActivity extends ActionBarActivity{
 	    int id = item.getItemId();
 	    
 	    //noinspection SimplifiableIfStatement
-	    if(id == R.id.action_settings){
-		    return true;
+	    if(id == R.id.logout){
+            ParseUser.logOut();
+            Intent registerIntent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(registerIntent);
+            finish();
 	    }
+
+        if(id == R.id.user){
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            if(currentUser != null){Toast.makeText(getApplicationContext(), currentUser.getUsername().toString(), Toast.LENGTH_LONG).show();}
+            else Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_LONG).show();
+        }
 	    return super.onOptionsItemSelected(item);
     }
 
@@ -146,6 +155,7 @@ public class RegisterPatientActivity extends ActionBarActivity{
                 if (e == null) {
                     Intent registerIntent = new Intent(getApplicationContext(),RegisterPatientActivity.class);
                     startActivity(registerIntent);
+                    finish();
                     
                     //display 'Success' toast
                     Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
