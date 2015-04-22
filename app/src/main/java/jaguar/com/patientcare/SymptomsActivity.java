@@ -96,6 +96,11 @@ public class SymptomsActivity extends ActionBarActivity {
         userSymptoms.setBladderLevel((int) rateBladder.getRating());
         userSymptoms.setCognitiveLevel((int) rateCognitive.getRating());
         userSymptoms.setEmotionalLevel((int) rateEmotional.getRating());
+        userSymptoms.setSymptomCount();
+
+        // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
+        ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());
+
         Toast.makeText(getApplicationContext(), "Symptoms saved to database", Toast.LENGTH_LONG).show();
         userSymptoms.saveInBackground();
         btnDone.setEnabled(false);

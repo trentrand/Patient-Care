@@ -15,6 +15,8 @@ package jaguar.com.patientcare;
  * Emotional Changes
  */
 
+import android.util.Log;
+
 import com.parse.ParseObject;
 import com.parse.ParseClassName;
 import com.parse.ParseUser;
@@ -27,6 +29,8 @@ public class Symptoms extends ParseObject {
 
     // Int array of Symptoms rating
     private int[] symptomRatings = new int[9];
+
+    private String[] symptomRatingsLabels = { "Pain", "Fatigue", "Numbness", "Spasticity", "Vision", "Dizziness", "Bladder", "Cognitive", "Emotional"};
 
     // Accessor methods for associated User
     public ParseUser getUser() {
@@ -121,6 +125,33 @@ public class Symptoms extends ParseObject {
         symptomRatings[8] = emotionalLevel;
     }
 
+    // Accessor methods for Highest Symptom level
+    // Retrieves and computes String label of the highest symptom
+    public String getHighestSymptom() {
+        int maxSymptomIndex = 0;
+        for (int i = 0; i < symptomRatings.length; i++){
+            int symptomRating = symptomRatings[i];
+            if ((symptomRating > symptomRatings[maxSymptomIndex])){
+                maxSymptomIndex = i;
+            }
+        }
+        return symptomRatingsLabels[maxSymptomIndex].toString();
+    }
 
+    // Accessor methods for Symptom count
+    // Sets the sum of all symptom ratings
+    public void setSymptomCount() {
+        // Hold the total temporarily
+        int total = 0;
 
+        for (int symptom: symptomRatings) {
+            total += (int) symptom;
+        }
+
+        put ("symptomCount", total);
+    }
+
+    public int getSymptomCount() {
+        return getInt("symptomCount");
+    }
 }

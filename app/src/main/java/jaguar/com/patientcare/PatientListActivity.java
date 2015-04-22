@@ -50,7 +50,7 @@ public class PatientListActivity extends ActionBarActivity {
                 if (e == null) {
                     Log.d("Patients", "Retrieved " + patientList.size() + " users");
                     patients = patientList;
-                    refreshDisplay(patientList);
+                    refreshDisplay(patients);
                 } else {
                     Log.d("Symptoms", "Error: " + e.getMessage());
                 }
@@ -113,6 +113,5 @@ public class PatientListActivity extends ActionBarActivity {
         PatientListAdapter listAdapter = new PatientListAdapter(this, patientList);
         // Set the ArrayAdapter as the ListView's adapter.
         listPatients.setAdapter(listAdapter);
-
     }
 }

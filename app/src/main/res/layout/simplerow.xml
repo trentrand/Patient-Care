@@ -25,7 +25,6 @@
         android:paddingLeft="15dp"
         android:textColor="#ffe93f33"
         android:background="#FFFFFF"
-        android:text="Symptom"
         android:layout_alignParentBottom="true"
         android:paddingBottom="5dp">
     </TextView>
