@@ -12,6 +12,16 @@
     <string name="btnForgotPassword">Forgot Password?</string>
     <string name="title_activity_symptoms">SymptomsActivity</string>
 
+    <string name="pain_level">Pain Level</string>
+    <string name="fatigue_level">Fatigue Level</string>
+    <string name="numbness_level">Numbness Level</string>
+    <string name="spasticity_level">Spasticity Level</string>
+    <string name="vision_problems_level">Vision Problems Level</string>
+    <string name="dizziness_level">Dizziness Level</string>
+    <string name="bladder_problems_level">Bladder Problems Level</string>
+    <string name="cognitive_changes_level">Cognitive Changes Level</string>
+    <string name="emotional_changes_level">Emotional Changes Level</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="Next">Next</string>
     <string name="Done">Done</string>
