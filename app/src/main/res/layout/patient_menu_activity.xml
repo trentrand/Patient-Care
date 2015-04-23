@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome to PatientCare!"
+        android:text="@string/welcome_to_paitentcare"
         android:textSize="30sp"
         android:id="@+id/textView"
         android:layout_below="@+id/imageView"
@@ -31,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Health Summary"
+        android:text="@string/my_health_summary"
         android:id="@+id/btnViewPastRecords"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -48,7 +48,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Request Emergency Assistance"
+        android:text="@string/request_emergency_assistance"
         android:id="@+id/btnEmergency"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

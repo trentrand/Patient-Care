@@ -22,6 +22,16 @@
     <string name="cognitive_changes_level">Cognitive Changes Level</string>
     <string name="emotional_changes_level">Emotional Changes Level</string>
 
+    <string name="welcome_to_paitentcare">Welcome to PatientCare!</string>
+    <string name="my_health_summary">My Health Summary</string>
+    <string name="submit_symptom_form">Submit Symptom Form</string>
+    <string name="request_emergency_assistance">Request Emergency Assistance</string>
+
+    <string name="patient_list">Patient List</string>
+
+    <string name="enter_patient_credentials">Enter Patient Credentials</string>
+    <string name="register">Register</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="Next">Next</string>
     <string name="Done">Done</string>

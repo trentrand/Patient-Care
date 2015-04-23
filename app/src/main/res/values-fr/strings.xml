@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PatientCare</string>
+
+    <string name="action_settings">Paramètres</string>
+    <string name="descLogo">Application logo</string>
+    <string name="hintemail">Email</string>
+    <string name="logout">Déconnexion</string>
+    <string name="hintfirst">Prénom</string>
+    <string name="hintlast">Nom de famille</string>
+    <string name="hintPassword">Mot de passe</string>
+    <string name="btnLogin">ConnexionS</string>
+    <string name="btnForgotPassword">Mot de passe oublié?</string>
+    <string name="title_activity_symptoms">SymptomsActivity</string>
+
+    <string name="pain_level">Niveau douleur</string>
+    <string name="fatigue_level">Fatigue Niveau</string>
+    <string name="numbness_level">Engourdissement Niveau</string>
+    <string name="spasticity_level">Niveau spasticité</string>
+    <string name="vision_problems_level">Problèmes de vision niveau</string>
+    <string name="dizziness_level">Niveau étourdissements</string>
+    <string name="bladder_problems_level">Problèmes vessie Niveau</string>
+    <string name="cognitive_changes_level">Cognitive changements Niveau</string>
+    <string name="emotional_changes_level">Niveau troubles émotifs</string>
+
+    <string name="welcome_to_paitentcare">Bienvenue à PatientCare!</string>
+    <string name="my_health_summary">Mon Résumé de la santé</string>
+    <string name="submit_symptom_form">Soumettre le formulaire Symptôme</string>
+    <string name="request_emergency_assistance">Aide d'urgence de demande</string>
+
+    <string name="patient_list">Liste des patients</string>
+
+    <string name="enter_patient_credentials">Entrez vérification des pouvoirs des patients</string>
+    <string name="register">Enregistrer</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="Next">Next</string>
+    <string name="Done">Done</string>
+
+    <string-array name="user_types">
+        <item>Patient</item>
+        <item>Médecin</item>
+        <item>Admin</item>
+    </string-array>
+    <string name="title_activity_register_patient">RegisterPatientActivity</string>
+    <string name="title_activity_patient_list">PatientListActivity</string>
+    <string name="title_activity_patient_summary">PatientSummaryActivity</string>
+</resources>

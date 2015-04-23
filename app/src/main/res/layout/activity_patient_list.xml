@@ -7,7 +7,7 @@
     tools:context="jaguar.com.patientcare.PatientListActivity"
     android:background="#ff5ea3ff">
 
-    <TextView android:text="Patient List" android:layout_width="wrap_content"
+    <TextView android:text="@string/patient_list" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffffff"
         android:textSize="75px"

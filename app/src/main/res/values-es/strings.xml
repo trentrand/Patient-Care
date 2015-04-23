@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PatientCare</string>
+
+    <string name="action_settings">Configuración</string>
+    <string name="descLogo">Application logo</string>
+    <string name="hintemail">Email</string>
+    <string name="logout">Salir</string>
+    <string name="hintfirst">Nombre</string>
+    <string name="hintlast">Apellido</string>
+    <string name="hintPassword">Contraseña</string>
+    <string name="btnLogin">Iniciar sesión</string>
+    <string name="btnForgotPassword">¿Olvidaste tu contraseña?</string>
+
+    <string name="title_activity_symptoms">SymptomsActivity</string>
+
+    <string name="pain_level">Nivel de Dolor</string>
+    <string name="fatigue_level">Fatiga Nivel</string>
+    <string name="numbness_level">Nivel Entumecimiento</string>
+    <string name="spasticity_level">Espasticidad Nivel</string>
+    <string name="vision_problems_level">Visión Problema Nivel</string>
+    <string name="dizziness_level">Nivel Mareo</string>
+    <string name="bladder_problems_level">Vejiga Problemas Nivel</string>
+    <string name="cognitive_changes_level">Cognitiva Cambios Nivel</string>
+    <string name="emotional_changes_level">Emocional Cambios Nivel</string>
+
+    <string name="welcome_to_paitentcare">Bienvenido a PatientCare!</string>
+    <string name="my_health_summary">Mi Resumen Salud</string>
+    <string name="submit_symptom_form">Enviar el formulario Síntoma</string>
+    <string name="request_emergency_assistance">sistencia de Emergencia Solicitud</string>
+
+    <string name="patient_list">Lista de pacientes</string>
+
+    <string name="enter_patient_credentials">Introducir credenciales Paciente</string>
+    <string name="register">Registrar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="Next">Next</string>
+    <string name="Done">Done</string>
+
+    <string-array name="user_types">
+        <item>Paciente</item>
+        <item>Médico</item>
+        <item>Administración</item>
+    </string-array>
+
+    <string name="title_activity_register_patient">RegisterPatientActivity</string>
+    <string name="title_activity_patient_list">PatientListActivity</string>
+    <string name="title_activity_patient_summary">PatientSummaryActivity</string>
+</resources>
