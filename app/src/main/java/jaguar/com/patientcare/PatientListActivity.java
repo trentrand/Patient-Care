@@ -32,7 +32,7 @@ public class PatientListActivity extends ActionBarActivity {
     private ParseQuery<ParseUser> query;
     private ListView listPatients;
     private List<ParseUser> patients;
-    private static ParseUser clickedUser;
+    public static ParseUser clickedUser;
 
     public PatientListActivity() {
     }
