@@ -1,8 +1,6 @@
 package jaguar.com.patientcare;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -12,20 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ParseQuery;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseUser;
 
 
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -47,14 +40,17 @@ public class SymptomsListActivity extends ActionBarActivity {
         listSymptoms = (ListView) findViewById(R.id.listSymptoms);
 
         query = ParseQuery.getQuery("Symptoms");
+        query.whereEqualTo("user", ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> symptomList, ParseException e) {
                 if(e == null){
+                    Log.d("Results", "Retrieved " + symptomList.size() + " results");
                     symptoms = symptomList;
                     refreshDisplay(symptoms);
                 }
                 else {
+                    Log.d("Results", "Error: " + e.getMessage());
                     toastExceptionObject(e); //throw exception
                 }
             }
@@ -131,14 +127,14 @@ public class SymptomsListActivity extends ActionBarActivity {
         listSymptoms.setAdapter(listAdapter);
     }
 
-        private void toastExceptionObject(Exception e) {
-            // Retrieve error message from e : Exception
-            String errorMessage = e.getLocalizedMessage();
+    private void toastExceptionObject(Exception e) {
+        // Retrieve error message from e : Exception
+        String errorMessage = e.getLocalizedMessage();
 
-            // Capitalize the first letter
-            errorMessage = errorMessage.substring(0, 1).toUpperCase() + errorMessage.substring(1, errorMessage.length());
+        // Capitalize the first letter
+        errorMessage = errorMessage.substring(0, 1).toUpperCase() + errorMessage.substring(1, errorMessage.length());
 
-            // Display toast with error message
-            Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
-        }
+        // Display toast with error message
+        Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
+    }
 }
