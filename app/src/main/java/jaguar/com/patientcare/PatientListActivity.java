@@ -45,6 +45,7 @@ public class PatientListActivity extends ActionBarActivity {
         listPatients = (ListView) findViewById(R.id.listPatients);
 
         query = ParseUser.getQuery();
+        query.whereEqualTo("queued", true); //only show's patients waiting to be seen
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> patientList, ParseException e) {
                 if (e == null) {
@@ -62,7 +63,7 @@ public class PatientListActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
 
-                Intent patientSummaryIntent = new Intent(getApplicationContext(), PatientSummaryActivity.class);
+                final Intent patientSummaryIntent = new Intent(getApplicationContext(), PatientSummaryActivity.class);
 
                 // Hold static reference to ParseUser clicked
                 // PatientSummaryActivity can retrieve the static reference
@@ -74,6 +75,28 @@ public class PatientListActivity extends ActionBarActivity {
 
                 //sends the patient's full name to the next activity
                 patientSummaryIntent.putExtra("name", clickedUser.getString("firstName") + " " + clickedUser.getString("lastName"));
+
+
+                ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Symptoms");
+                query1.orderByDescending("updatedAt");
+                query1.whereEqualTo("user", clickedUser);
+                query1.getFirstInBackground(new GetCallback<ParseObject>() {
+                    //@Override
+                    public void done(ParseObject symptom, ParseException e) {
+                        if (e == null) {
+                            patientSummaryIntent.putExtra("painl", symptom.get("painLevel").toString());
+                            patientSummaryIntent.putExtra("fatiguel", symptom.get("fatigueLevel").toString());
+                            patientSummaryIntent.putExtra("numbl", symptom.get("numbnessLevel").toString());
+                            patientSummaryIntent.putExtra("spastl", symptom.get("spasticityLevel").toString());
+                            patientSummaryIntent.putExtra("visionl", symptom.get("visionLevel").toString());
+                            patientSummaryIntent.putExtra("dizzinessl", symptom.get("dizzinessLevel").toString());
+                            patientSummaryIntent.putExtra("bladderl", symptom.get("bladderLevel").toString());
+                            patientSummaryIntent.putExtra("cogl", symptom.get("cognitiveLevel").toString());
+                            patientSummaryIntent.putExtra("emol", symptom.get("emotionalLevel").toString());
+                        } else {
+                        }
+                    }
+                });
                 startActivity(patientSummaryIntent);
             }
         });

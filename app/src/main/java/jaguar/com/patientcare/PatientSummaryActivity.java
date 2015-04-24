@@ -3,22 +3,33 @@ package jaguar.com.patientcare;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class PatientSummaryActivity extends ActionBarActivity {
+    private ParseUser tempPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_summary);
 
+        String userEmail = "";
+        String test;
         //gets the patient's name sent from PatientListActivity
         Bundle extras = getIntent().getExtras();
-        if (extras != null){
+        if (extras != null) {
             //sets the Actions Bar title to the patient's name
             setTitle(extras.getString("name"));
         }

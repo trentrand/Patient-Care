@@ -44,8 +44,10 @@
             android:label="@string/title_activity_patient_list" >
         </activity>
         <activity
+            android:configChanges="keyboardHidden|orientation"
             android:name=".PatientSummaryActivity"
-            android:label="@string/title_activity_patient_summary" >
+            android:label="@string/title_activity_patient_summary"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
     </application>
 
