@@ -7,17 +7,6 @@
     tools:context="jaguar.com.patientcare.PatientListActivity"
     android:background="#ff5ea3ff">
 
-    <TextView android:text="@string/patient_list" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffffff"
-        android:textSize="75px"
-        android:id="@+id/txtPatientList"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:paddingBottom="12px"
-        android:paddingTop="12px" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +15,6 @@
         android:divider="#ff5ea3ff"
         android:background="#ffffffff"
         android:dividerHeight="5px"
-        android:layout_below="@+id/txtPatientList"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"

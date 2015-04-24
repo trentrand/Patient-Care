@@ -89,6 +89,7 @@ public class SymptomsActivity extends ActionBarActivity {
     public void btnDone() {
         Symptoms userSymptoms = new Symptoms();
         userSymptoms.setUser(ParseUser.getCurrentUser());
+        userSymptoms.put("emergency", false);
         userSymptoms.setPainLevel((int) ratePain.getRating());
         userSymptoms.setFatigueLevel((int) rateFatigue.getRating());
         userSymptoms.setNumbnessLevel((int) rateNumbness.getRating());
@@ -99,10 +100,11 @@ public class SymptomsActivity extends ActionBarActivity {
         userSymptoms.setCognitiveLevel((int) rateCognitive.getRating());
         userSymptoms.setEmotionalLevel((int) rateEmotional.getRating());
         userSymptoms.setSymptomCount();
+        userSymptoms.put("queued", true);
+        userSymptoms.put("comments", "");
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());
-        ParseUser.getCurrentUser().put("queued", true);
 
         Toast.makeText(getApplicationContext(), "Symptoms saved to database", Toast.LENGTH_LONG).show();
         userSymptoms.saveInBackground();

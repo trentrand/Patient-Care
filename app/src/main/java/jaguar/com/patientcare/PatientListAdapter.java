@@ -1,37 +1,32 @@
 package jaguar.com.patientcare;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by trentrand on 4/17/15.
  */
-public class PatientListAdapter extends ArrayAdapter<ParseUser> {
+public class PatientListAdapter extends ArrayAdapter<ParseObject> {
     private Context context;
-    private List<ParseUser> patients;
+    private ParseUser patient;
+    private List<ParseObject> patients;
     private TextView txtFullname;
     private TextView txtSymptom;
 
-    public PatientListAdapter(Context context, List<ParseUser> patientList)
-    {
-        super(context, R.layout.simplerow, patientList);
+    public PatientListAdapter(Context context, List<ParseObject> patients) {
+        super(context, R.layout.simplerow, patients);
         this.context = context;
-        this.patients = patientList;
+        this.patients = patients;
     }
 
     @Override
@@ -47,8 +42,13 @@ public class PatientListAdapter extends ArrayAdapter<ParseUser> {
 
         txtFullname = (TextView) convertView.findViewById(R.id.lblFullname);
         txtSymptom = (TextView) convertView.findViewById(R.id.lblSymptom);
-        txtFullname.setText(patients.get(position).getString("firstName") + " " + patients.get(position).getString("lastName"));
-        txtSymptom.setText(patients.get(position).getString("highestSymptom"));
+        patient = (ParseUser)patients.get(position).get("user");
+        try {
+            txtFullname.setText(patient.fetchIfNeeded().getString("firstName") + " " + patient.fetchIfNeeded().getString("lastName"));
+            txtSymptom.setText(patient.fetchIfNeeded().getString("highestSymptom"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return convertView;
     }

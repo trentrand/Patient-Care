@@ -17,8 +17,8 @@ import com.parse.ParseUser;
 
 public class SymptomsSummaryActivity extends ActionBarActivity {
 
-    private String painlvl,fatiguelvl, numbnesslvl, spasticitylvl, visionlvl;
-    private String dizzinesslvl, bladderlvl, cognitivelvl, emotionallvl;
+    private String emergency, painlvl,fatiguelvl, numbnesslvl, spasticitylvl, visionlvl;
+    private String dizzinesslvl, bladderlvl, cognitivelvl, emotionallvl, doctorComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class SymptomsSummaryActivity extends ActionBarActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             setTitle(extras.getString("date"));
+            doctorComment = extras.getString("dCom");
+            emergency = extras.getString("emer");
             painlvl = extras.getString("painl");
             fatiguelvl = extras.getString("fatiguel");
             numbnesslvl = extras.getString("numbl");
@@ -39,6 +41,8 @@ public class SymptomsSummaryActivity extends ActionBarActivity {
             emotionallvl = extras.getString("emol");
         }
 
+        final TextView emergencyChange = (TextView) findViewById(R.id.emergency);
+        final TextView dComment = (TextView) findViewById(R.id.commentBox);
         final TextView painChange = (TextView) findViewById(R.id.pain);
         final TextView fatigueChange = (TextView) findViewById(R.id.fatigue);
         final TextView numbnessChange = (TextView) findViewById(R.id.numbness);
@@ -49,6 +53,9 @@ public class SymptomsSummaryActivity extends ActionBarActivity {
         final TextView cognitiveChange = (TextView) findViewById(R.id.cognitive);
         final TextView emotionalChange = (TextView) findViewById(R.id.emotional);
 
+        if(emergency.equals("false")) {emergencyChange.setText("Emergency: No");}
+        else {emergencyChange.setText("Emergency: Yes");}
+        dComment.setText(doctorComment);
         painChange.setText("Pain: " + painlvl);
         fatigueChange.setText("Fatigue: " + fatiguelvl);
         numbnessChange.setText("Numbness: " + numbnesslvl);

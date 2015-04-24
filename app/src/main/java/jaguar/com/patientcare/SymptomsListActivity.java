@@ -83,7 +83,9 @@ public class SymptomsListActivity extends ActionBarActivity {
                 }
 
                 //sends the patient's full name to the next activity
+                symptomSummaryIntent.putExtra("dCom", clickedSymptom.get("comments").toString());
                 symptomSummaryIntent.putExtra("date", date + " - " + h + ":" + mins + am_pm);
+                symptomSummaryIntent.putExtra("emer", clickedSymptom.get("emergency").toString());
                 symptomSummaryIntent.putExtra("painl", clickedSymptom.get("painLevel").toString());
                 symptomSummaryIntent.putExtra("fatiguel", clickedSymptom.get("fatigueLevel").toString());
                 symptomSummaryIntent.putExtra("numbl", clickedSymptom.get("numbnessLevel").toString());

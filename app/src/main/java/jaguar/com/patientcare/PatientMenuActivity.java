@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.parse.ParseUser;
 
 public class PatientMenuActivity extends ActionBarActivity {
@@ -78,9 +80,31 @@ public class PatientMenuActivity extends ActionBarActivity {
     }
 
     public void btnEmergency(){
-        //stuff about notifying doctors
-//        Intent symptomsIntent = new Intent(getApplicationContext(), SymptomsActivity.class);
-//        startActivity(symptomsIntent);
+        Symptoms userSymptoms = new Symptoms();
+        userSymptoms.setUser(ParseUser.getCurrentUser());
+        userSymptoms.put("emergency", true);
+        userSymptoms.setPainLevel(0);
+        userSymptoms.setFatigueLevel(0);
+        userSymptoms.setNumbnessLevel(0);
+        userSymptoms.setSpasticityLevel(0);
+        userSymptoms.setVisionLevel(0);
+        userSymptoms.setDizzinessLevel(0);
+        userSymptoms.setBladderLevel(0);
+        userSymptoms.setCognitiveLevel(0);
+        userSymptoms.setEmotionalLevel(0);
+        userSymptoms.setSymptomCount();
+        userSymptoms.put("queued", true);
+        userSymptoms.put("comments", "");
+
+        // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
+        ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());
+
+        Toast.makeText(getApplicationContext(), "Emergency Situation Recorded", Toast.LENGTH_LONG).show();
+        userSymptoms.saveInBackground();
+        btnEmergency.setEnabled(false);
+        Intent menuIntent = new Intent(getApplicationContext(),PatientMenuActivity.class);
+        startActivity(menuIntent);
+        finish();
     }
 
     public void btnInputPainLevels(){

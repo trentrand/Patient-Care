@@ -29,10 +29,14 @@ import android.widget.Toast;
 
 public class PatientListActivity extends ActionBarActivity {
 
-    private ParseQuery<ParseUser> query;
+    //private ParseQuery<ParseUser> query;
+    private ParseQuery<ParseObject> query;
     private ListView listPatients;
-    private List<ParseUser> patients;
-    public static ParseUser clickedUser;
+    //private List<ParseUser> patients;
+    private List<ParseObject> patients;
+
+    public static ParseObject clickedUser;
+    public ParseUser clickedU;
 
     public PatientListActivity() {
     }
@@ -44,6 +48,7 @@ public class PatientListActivity extends ActionBarActivity {
         setContentView(R.layout.activity_patient_list);
         listPatients = (ListView) findViewById(R.id.listPatients);
 
+        /*
         query = ParseUser.getQuery();
         query.whereEqualTo("queued", true); //only show's patients waiting to be seen
         query.findInBackground(new FindCallback<ParseUser>() {
@@ -57,11 +62,29 @@ public class PatientListActivity extends ActionBarActivity {
                 }
             }
         });
+        */
 
+        query = ParseQuery.getQuery("Symptoms");
+        query.orderByDescending("updatedAt");
+        query.whereEqualTo("queued", true);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> symptomList, ParseException e) {
+                if(e == null){
+                    Log.d("Results", "Retrieved " + symptomList.size() + " results");
+                    patients = symptomList;
+                    refreshDisplay(patients);
+                }
+                else {
+                    Log.d("Symptoms", "Error: " + e.getMessage());
+                }
+            }
+        });
+
+        
         listPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 final Intent patientSummaryIntent = new Intent(getApplicationContext(), PatientSummaryActivity.class);
 
@@ -73,10 +96,11 @@ public class PatientListActivity extends ActionBarActivity {
                     System.out.println(e.getLocalizedMessage());
                 }
 
+                clickedU = (ParseUser)clickedUser.get("user");
                 //sends the patient's full name to the next activity
-                patientSummaryIntent.putExtra("name", clickedUser.getString("firstName") + " " + clickedUser.getString("lastName"));
-
-
+                patientSummaryIntent.putExtra("name", clickedU.getString("firstName") + " " + clickedU.getString("lastName"));
+                patientSummaryIntent.putExtra("oId", clickedUser.getObjectId());
+/*
                 ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Symptoms");
                 query1.orderByDescending("updatedAt");
                 query1.whereEqualTo("user", clickedUser);
@@ -96,7 +120,7 @@ public class PatientListActivity extends ActionBarActivity {
                         } else {
                         }
                     }
-                });
+                });*/
                 startActivity(patientSummaryIntent);
             }
         });
@@ -135,7 +159,7 @@ public class PatientListActivity extends ActionBarActivity {
      * Refreshes the list view with parameter List
      * @param patientList
      */
-    public void refreshDisplay(List<ParseUser> patientList) {
+    public void refreshDisplay(List<ParseObject> patientList) {
         // Create custom PatientListAdapter using the patientList
         PatientListAdapter listAdapter = new PatientListAdapter(this, patientList);
         // Set the ArrayAdapter as the ListView's adapter.

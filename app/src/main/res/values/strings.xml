@@ -10,7 +10,7 @@
     <string name="hintPassword">Password</string>
     <string name="btnLogin">Sign In</string>
     <string name="btnForgotPassword">Forgot Password?</string>
-    <string name="title_activity_symptoms">SymptomsActivity</string>
+    <string name="title_activity_symptoms">Menu</string>
 
     <string name="pain_level">Pain Level</string>
     <string name="fatigue_level">Fatigue Level</string>
@@ -43,7 +43,7 @@
         <item>Admin</item>
     </string-array>
     <string name="title_activity_register_patient">Register New User</string>
-    <string name="title_activity_patient_list">PatientListActivity</string>
+    <string name="title_activity_patient_list">Patient List</string>
     <string name="title_activity_symptoms_list">Past Symptom Entries</string>
     <string name="title_activity_symptoms_summary">Placeholder</string>
 </resources>
