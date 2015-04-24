@@ -70,8 +70,19 @@ public class SymptomsListActivity extends ActionBarActivity {
                     toastExceptionObject(e); //throw exception
                 }
 
+                String full = clickedSymptom.getUpdatedAt().toString();
+                String date = full.substring(0, full.indexOf(":") - 3);
+                String hour = full.substring(full.indexOf(":") - 2, full.indexOf(":"));
+                String mins = full.substring(full.indexOf(":") + 1, full.indexOf(":") + 3);
+                String am_pm = "am";
+                int h = Integer.parseInt(hour);
+                if((h-12) >= 0){
+                    h = h-12;
+                    am_pm = "pm";
+                }
+
                 //sends the patient's full name to the next activity
-                symptomSummaryIntent.putExtra("date", clickedSymptom.getUpdatedAt().toString());
+                symptomSummaryIntent.putExtra("date", date + " - " + h + ":" + mins + am_pm);
                 symptomSummaryIntent.putExtra("painl", clickedSymptom.get("painLevel").toString());
                 symptomSummaryIntent.putExtra("fatiguel", clickedSymptom.get("fatigueLevel").toString());
                 symptomSummaryIntent.putExtra("numbl", clickedSymptom.get("numbnessLevel").toString());
