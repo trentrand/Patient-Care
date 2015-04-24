@@ -28,6 +28,7 @@
     <string name="request_emergency_assistance">Request Emergency Assistance</string>
 
     <string name="patient_list">Patient List</string>
+    <string name="symptoms_list">Past Symptom Entries</string>
 
     <string name="enter_patient_credentials">Enter Patient Credentials</string>
     <string name="register">Register</string>
@@ -41,7 +42,8 @@
         <item>Doctor</item>
         <item>Admin</item>
     </string-array>
-    <string name="title_activity_register_patient">RegisterPatientActivity</string>
+    <string name="title_activity_register_patient">Register New User</string>
     <string name="title_activity_patient_list">PatientListActivity</string>
-    <string name="title_activity_patient_summary">PatientSummaryActivity</string>
+    <string name="title_activity_symptoms_list">Past Symptom Entries</string>
+    <string name="title_activity_symptoms_summary">Placeholder</string>
 </resources>

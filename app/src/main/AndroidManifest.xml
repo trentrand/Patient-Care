@@ -24,6 +24,14 @@
             android:label="@string/title_activity_symptoms" >
         </activity>
         <activity
+            android:name=".SymptomsListActivity"
+            android:label="@string/title_activity_symptoms_list" >
+        </activity>
+        <activity
+            android:name=".SymptomsSummaryActivity"
+            android:label="@string/title_activity_symptoms_summary" >
+        </activity>
+        <activity
             android:name=".SymptomsActivity"
             android:label="@string/title_activity_symptoms" >
         </activity>

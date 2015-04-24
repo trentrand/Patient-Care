@@ -26,7 +26,7 @@
     <string name="welcome_to_paitentcare">Bienvenue à PatientCare!</string>
     <string name="my_health_summary">Mon Résumé de la santé</string>
     <string name="submit_symptom_form">Soumettre le formulaire Symptôme</string>
-    <string name="request_emergency_assistance">Aide d'urgence de demande</string>
+    <string name="request_emergency_assistance">Aide d\'urgence de demande</string>
 
     <string name="patient_list">Liste des patients</string>
 

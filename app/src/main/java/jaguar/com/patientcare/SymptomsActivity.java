@@ -65,17 +65,19 @@ public class SymptomsActivity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(id == R.id.logout){
+            ParseUser.logOut();
+            Intent registerIntent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(registerIntent);
+            finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -100,6 +102,7 @@ public class SymptomsActivity extends ActionBarActivity {
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());
+        ParseUser.getCurrentUser().put("queued", true);
 
         Toast.makeText(getApplicationContext(), "Symptoms saved to database", Toast.LENGTH_LONG).show();
         userSymptoms.saveInBackground();

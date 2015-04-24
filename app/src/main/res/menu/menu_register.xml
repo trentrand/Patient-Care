@@ -2,5 +2,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context="jaguar.com.patientcare.RegisterPatientActivity">
     <item android:id="@+id/logout" android:title="@string/logout" android:showAsAction="never" />
-    <item android:id="@+id/user" android:title="User" android:showAsAction="never" />
 </menu>
