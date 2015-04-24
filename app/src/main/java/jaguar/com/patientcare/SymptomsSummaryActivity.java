@@ -8,11 +8,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.GetCallback;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.ParseException;
 
 /**
  * Created by graemedrucker on 4/23/15.
@@ -20,9 +17,8 @@ import com.parse.ParseException;
 
 public class SymptomsSummaryActivity extends ActionBarActivity {
 
-    private String objId, painlvl,fatiguelvl, numbnesslvl, spasticitylvl, visionlvl;
+    private String painlvl,fatiguelvl, numbnesslvl, spasticitylvl, visionlvl;
     private String dizzinesslvl, bladderlvl, cognitivelvl, emotionallvl;
-    private TextView txtPain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +27,18 @@ public class SymptomsSummaryActivity extends ActionBarActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-            objId = extras.getString("objId");
+            setTitle(extras.getString("date"));
+            painlvl = extras.getString("painl");
+            fatiguelvl = extras.getString("fatiguel");
+            numbnesslvl = extras.getString("numbl");
+            spasticitylvl = extras.getString("spastl");
+            visionlvl = extras.getString("visionl");
+            dizzinesslvl = extras.getString("dizzinessl");
+            bladderlvl = extras.getString("bladderl");
+            cognitivelvl = extras.getString("cogl");
+            emotionallvl = extras.getString("emol");
         }
-        else{objId = "null";}
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Symptoms");
-        query.getInBackground(objId, new GetCallback<ParseObject>() {
-            public void done(ParseObject currentSymptom, ParseException e) {
-                if (e == null) {
-                    painlvl = "test"; //currentSymptom.get("painLevel").toString();
-                } else {
-                    toastExceptionObject(e); //throw exception
-                }
-            }
-        });
-
-        setTitle(objId);
         final TextView painChange = (TextView) findViewById(R.id.pain);
         final TextView fatigueChange = (TextView) findViewById(R.id.fatigue);
         final TextView numbnessChange = (TextView) findViewById(R.id.numbness);
@@ -57,7 +49,15 @@ public class SymptomsSummaryActivity extends ActionBarActivity {
         final TextView cognitiveChange = (TextView) findViewById(R.id.cognitive);
         final TextView emotionalChange = (TextView) findViewById(R.id.emotional);
 
-        painChange.setText("Pain " + painlvl);
+        painChange.setText("Pain: " + painlvl);
+        fatigueChange.setText("Fatigue: " + fatiguelvl);
+        numbnessChange.setText("Numbness: " + numbnesslvl);
+        spasticityChange.setText("Spasticity: " + spasticitylvl);
+        visionChange.setText("Vision: " + visionlvl);
+        dizzinessChange.setText("Dizziness: " + dizzinesslvl);
+        bladderChange.setText("Bladder: " + bladderlvl);
+        cognitiveChange.setText("Cognitive: " + cognitivelvl);
+        emotionalChange.setText("Emotional: " + emotionallvl);
     }
 
 

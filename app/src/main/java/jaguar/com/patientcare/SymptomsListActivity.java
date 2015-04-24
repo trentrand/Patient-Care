@@ -75,7 +75,16 @@ public class SymptomsListActivity extends ActionBarActivity {
                 }
 
                 //sends the patient's full name to the next activity
-                symptomSummaryIntent.putExtra("objId", clickedSymptom.getObjectId().toString());
+                symptomSummaryIntent.putExtra("date", clickedSymptom.getUpdatedAt().toString());
+                symptomSummaryIntent.putExtra("painl", clickedSymptom.get("painLevel").toString());
+                symptomSummaryIntent.putExtra("fatiguel", clickedSymptom.get("fatigueLevel").toString());
+                symptomSummaryIntent.putExtra("numbl", clickedSymptom.get("numbnessLevel").toString());
+                symptomSummaryIntent.putExtra("spastl", clickedSymptom.get("spasticityLevel").toString());
+                symptomSummaryIntent.putExtra("visionl", clickedSymptom.get("visionLevel").toString());
+                symptomSummaryIntent.putExtra("dizzinessl", clickedSymptom.get("dizzinessLevel").toString());
+                symptomSummaryIntent.putExtra("bladderl", clickedSymptom.get("bladderLevel").toString());
+                symptomSummaryIntent.putExtra("cogl", clickedSymptom.get("cognitiveLevel").toString());
+                symptomSummaryIntent.putExtra("emol", clickedSymptom.get("emotionalLevel").toString());
                 startActivity(symptomSummaryIntent);
                 //Toast.makeText(getApplicationContext(), clickedSymptom.getObjectId().toString(), Toast.LENGTH_LONG).show();
             }
