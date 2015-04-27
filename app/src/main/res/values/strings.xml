@@ -46,4 +46,20 @@
     <string name="title_activity_patient_list">Patient List</string>
     <string name="title_activity_symptoms_list">Past Symptom Entries</string>
     <string name="title_activity_symptoms_summary">Placeholder</string>
+
+    <string name="dequeue_patient">Dequeue Patient</string>
+    <string name="emergency">Emergency</string>
+    <string name="pain">Pain</string>
+    <string name="fatigue">Fatigue</string>
+    <string name="numbness">Numbness</string>
+    <string name="spasticity">Spasticity</string>
+    <string name="vision">Vision</string>
+    <string name="dizziness">Dizziness</string>
+    <string name="bladder">Bladder</string>
+    <string name="cognitive">Cognitive</string>
+    <string name="emotional">Emotional</string>
+    <string name="comments_for_patient">Comments for Patient</string>
+    <string name="submit">Submit</string>
+
+    <string name="doctors_comment">Doctor's Comment:</string>
 </resources>

@@ -42,7 +42,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Symptom Form"
+        android:text="@string/submit_symptom_form"
         android:id="@+id/btnInputPainLevels"
         android:layout_below="@+id/btnViewPastRecords"
         android:layout_centerHorizontal="true" />

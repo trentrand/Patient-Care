@@ -47,4 +47,21 @@
     <string name="title_activity_register_patient">RegisterPatientActivity</string>
     <string name="title_activity_patient_list">PatientListActivity</string>
     <string name="title_activity_patient_summary">PatientSummaryActivity</string>
+
+    <string name="dequeue_patient">Retire del Paciente</string>
+    <string name="emergency">Emergencia</string>
+    <string name="pain">Dolor</string>
+    <string name="fatigue">Fatiga</string>
+    <string name="numbness">Entumecimiento</string>
+    <string name="spasticity">La espasticidad</string>
+    <string name="vision">Visión</string>
+    <string name="dizziness">Mareo</string>
+    <string name="bladder">Vejiga</string>
+    <string name="cognitive">Cognitivo</string>
+    <string name="emotional">Emocional</string>
+    <string name="comments_for_patient">Comentarios para Paciente</string>
+    <string name="submit">Entregar</string>
+
+    <string name="doctors_comment">Doctor's Comment:</string>
+
 </resources>

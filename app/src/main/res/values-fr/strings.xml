@@ -45,4 +45,21 @@
     <string name="title_activity_register_patient">RegisterPatientActivity</string>
     <string name="title_activity_patient_list">PatientListActivity</string>
     <string name="title_activity_patient_summary">PatientSummaryActivity</string>
+
+    <string name="dequeue_patient">Patient dequeue</string>
+    <string name="emergency">Urgence</string>
+    <string name="pain">Douleur</string>
+    <string name="fatigue">Fatigue</string>
+    <string name="numbness">Engourdissement</string>
+    <string name="spasticity">Spasticité</string>
+    <string name="vision">Vision</string>
+    <string name="dizziness">Vertiges</string>
+    <string name="bladder">Vessie</string>
+    <string name="cognitive">Cognitif</string>
+    <string name="emotional">Émotionnel</string>
+    <string name="comments_for_patient">Commentaires pour le patient</string>
+    <string name="submit">Soumettre</string>
+
+    <string name="doctors_comment">Doctor's Comment:</string>
+
 </resources>
