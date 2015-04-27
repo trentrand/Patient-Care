@@ -21,6 +21,8 @@ import com.parse.ParseObject;
 import com.parse.ParseClassName;
 import com.parse.ParseUser;
 
+import java.util.Calendar;
+
 @ParseClassName("Symptoms")
 public class Symptoms extends ParseObject {
 
@@ -70,6 +72,17 @@ public class Symptoms extends ParseObject {
         put ("numbnessLevel", numbnessLevel);
         symptomRatings[2] = numbnessLevel;
     }
+
+    public void setSortKey(Boolean isEmergency) {
+        if (isEmergency = true) {
+            put("sortKey", 2000000000);
+        } else {
+            Calendar c = Calendar.getInstance();
+            int sortKey = c.get(Calendar.SECOND);
+            put("sortKey", sortKey);
+        }
+    }
+
     // Accessor methods for Spasticity level
     public int getSpasticityLevel() {
         return getInt("spasticityLevel");

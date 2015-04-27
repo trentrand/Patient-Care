@@ -1,8 +1,6 @@
 package jaguar.com.patientcare;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.FindCallback;
@@ -21,18 +18,12 @@ import com.parse.ParseUser;
 
 
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class PatientListActivity extends ActionBarActivity {
 
-    //private ParseQuery<ParseUser> query;
     private ParseQuery<ParseObject> query;
     private ListView listPatients;
-    //private List<ParseUser> patients;
     private List<ParseObject> patients;
 
     public static ParseObject clickedUser;
@@ -47,22 +38,6 @@ public class PatientListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_list);
         listPatients = (ListView) findViewById(R.id.listPatients);
-
-        /*
-        query = ParseUser.getQuery();
-        query.whereEqualTo("queued", true); //only show's patients waiting to be seen
-        query.findInBackground(new FindCallback<ParseUser>() {
-            public void done(List<ParseUser> patientList, ParseException e) {
-                if (e == null) {
-                    Log.d("Patients", "Retrieved " + patientList.size() + " users");
-                    patients = patientList;
-                    refreshDisplay(patients);
-                } else {
-                    Log.d("Symptoms", "Error: " + e.getMessage());
-                }
-            }
-        });
-        */
 
         query = ParseQuery.getQuery("Symptoms");
         query.orderByDescending("updatedAt");
@@ -100,27 +75,6 @@ public class PatientListActivity extends ActionBarActivity {
                 //sends the patient's full name to the next activity
                 patientSummaryIntent.putExtra("name", clickedU.getString("firstName") + " " + clickedU.getString("lastName"));
                 patientSummaryIntent.putExtra("oId", clickedUser.getObjectId());
-/*
-                ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Symptoms");
-                query1.orderByDescending("updatedAt");
-                query1.whereEqualTo("user", clickedUser);
-                query1.getFirstInBackground(new GetCallback<ParseObject>() {
-                    //@Override
-                    public void done(ParseObject symptom, ParseException e) {
-                        if (e == null) {
-                            patientSummaryIntent.putExtra("painl", symptom.get("painLevel").toString());
-                            patientSummaryIntent.putExtra("fatiguel", symptom.get("fatigueLevel").toString());
-                            patientSummaryIntent.putExtra("numbl", symptom.get("numbnessLevel").toString());
-                            patientSummaryIntent.putExtra("spastl", symptom.get("spasticityLevel").toString());
-                            patientSummaryIntent.putExtra("visionl", symptom.get("visionLevel").toString());
-                            patientSummaryIntent.putExtra("dizzinessl", symptom.get("dizzinessLevel").toString());
-                            patientSummaryIntent.putExtra("bladderl", symptom.get("bladderLevel").toString());
-                            patientSummaryIntent.putExtra("cogl", symptom.get("cognitiveLevel").toString());
-                            patientSummaryIntent.putExtra("emol", symptom.get("emotionalLevel").toString());
-                        } else {
-                        }
-                    }
-                });*/
                 startActivity(patientSummaryIntent);
             }
         });

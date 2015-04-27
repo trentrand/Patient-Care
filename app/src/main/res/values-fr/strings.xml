@@ -60,6 +60,6 @@
     <string name="comments_for_patient">Commentaires pour le patient</string>
     <string name="submit">Soumettre</string>
 
-    <string name="doctors_comment">Doctor's Comment:</string>
+    <string name="doctors_comment">Doctor\'s Comment:</string>
 
 </resources>

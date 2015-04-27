@@ -9,7 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 public class PatientMenuActivity extends ActionBarActivity {
 
@@ -80,6 +85,26 @@ public class PatientMenuActivity extends ActionBarActivity {
     }
 
     public void btnEmergency(){
+        ParseQuery query = ParseQuery.getQuery("Symptoms");
+        query.whereEqualTo("user", ParseUser.getCurrentUser());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> symptomList, com.parse.ParseException e) {
+                if(e == null){
+                    //Log.d("Results", "Retrieved " + symptomList.size() + " results");
+                    for(int i = 0; i < symptomList.size(); i++){
+                        ParseObject p  = symptomList.get(i);
+                        p.put("queued", false);
+                        p.saveInBackground();
+                    }
+                    //refreshDisplay(patients);
+                }
+                else {
+                    //Log.d("Symptoms", "Error: " + e.getMessage());
+                }
+            }
+        });
+
         Symptoms userSymptoms = new Symptoms();
         userSymptoms.setUser(ParseUser.getCurrentUser());
         userSymptoms.put("emergency", true);
@@ -95,6 +120,7 @@ public class PatientMenuActivity extends ActionBarActivity {
         userSymptoms.setSymptomCount();
         userSymptoms.put("queued", true);
         userSymptoms.put("comments", "");
+        userSymptoms.setSortKey(true);
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());

@@ -61,5 +61,5 @@
     <string name="comments_for_patient">Comments for Patient</string>
     <string name="submit">Submit</string>
 
-    <string name="doctors_comment">Doctor's Comment:</string>
+    <string name="doctors_comment">Doctor\'s Comment:</string>
 </resources>

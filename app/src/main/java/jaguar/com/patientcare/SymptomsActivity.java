@@ -12,9 +12,13 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.ParseException;
+import java.util.List;
 
 
 public class SymptomsActivity extends ActionBarActivity {
@@ -87,6 +91,25 @@ public class SymptomsActivity extends ActionBarActivity {
      * userSymptoms object is saved in background to Parse database
      */
     public void btnDone() {
+        ParseQuery query = ParseQuery.getQuery("Symptoms");
+        query.whereEqualTo("user", ParseUser.getCurrentUser());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> symptomList, com.parse.ParseException e) {
+                if(e == null){
+                    //Log.d("Results", "Retrieved " + symptomList.size() + " results");
+                    for(int i = 0; i < symptomList.size(); i++){
+                        ParseObject p  = symptomList.get(i);
+                        p.put("queued", false);
+                        p.saveInBackground();
+                    }
+                    //refreshDisplay(patients);
+                }
+                else {
+                    //Log.d("Symptoms", "Error: " + e.getMessage());
+                }
+            }
+        });
         Symptoms userSymptoms = new Symptoms();
         userSymptoms.setUser(ParseUser.getCurrentUser());
         userSymptoms.put("emergency", false);
@@ -102,6 +125,7 @@ public class SymptomsActivity extends ActionBarActivity {
         userSymptoms.setSymptomCount();
         userSymptoms.put("queued", true);
         userSymptoms.put("comments", "");
+        userSymptoms.setSortKey(false);
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());

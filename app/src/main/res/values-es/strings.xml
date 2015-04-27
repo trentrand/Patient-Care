@@ -62,6 +62,6 @@
     <string name="comments_for_patient">Comentarios para Paciente</string>
     <string name="submit">Entregar</string>
 
-    <string name="doctors_comment">Doctor's Comment:</string>
+    <string name="doctors_comment">Doctor\'s Comment:</string>
 
 </resources>
