@@ -16,7 +16,21 @@ Patient Care uses the following open source projects to work properly:
 ### Installation
 
 * Open with Android Studio and run with Simulator to test
-* Application functionality can be tested with the credentials: testemail / testpasword
+* Application functionality can be tested with the following credentials:
+* Admin Account:
+*	email: a@gmail.com
+*	password: a
+
+* Doctor Account:
+*	email: d@gmail.com
+*	password: a
+
+* Patient Account:
+*	email: p@gmail.com
+*	password: a
+
+* From the admin account new accounts of admin, doctor, or patient type can be made for further testing
+
 
 ### Documentation
 
