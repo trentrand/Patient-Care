@@ -35,7 +35,7 @@ public class SymptomsListAdapter extends ArrayAdapter<ParseObject>{
         }
 
         txtDate = (TextView) convertView.findViewById(R.id.lblFullname);
-        String full = symptoms.get(position).getUpdatedAt().toString();
+        String full = symptoms.get(position).getCreatedAt().toString();
         String date = full.substring(0, full.indexOf(":") - 3);
         String hour = full.substring(full.indexOf(":") - 2, full.indexOf(":"));
         String mins = full.substring(full.indexOf(":") + 1, full.indexOf(":") + 3);

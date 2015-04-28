@@ -22,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtemail"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:hint="@string/hintemail"
         android:background="#ffffffff"
         android:paddingTop="10dp"

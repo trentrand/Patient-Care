@@ -40,7 +40,7 @@ public class PatientListActivity extends ActionBarActivity {
         listPatients = (ListView) findViewById(R.id.listPatients);
 
         query = ParseQuery.getQuery("Symptoms");
-        query.orderByDescending("updatedAt");
+        query.orderByDescending("sortKey");
         query.whereEqualTo("queued", true);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override

@@ -22,7 +22,7 @@
         android:id="@+id/txtemail"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:hint="@string/hintemail"
         android:background="#ffffffff"
         android:paddingTop="10dp"

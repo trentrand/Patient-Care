@@ -18,6 +18,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -97,12 +98,12 @@ public class SymptomsActivity extends ActionBarActivity {
             @Override
             public void done(List<ParseObject> symptomList, com.parse.ParseException e) {
                 if(e == null){
-                    //Log.d("Results", "Retrieved " + symptomList.size() + " results");
-                    for(int i = 0; i < symptomList.size(); i++){
-                        ParseObject p  = symptomList.get(i);
-                        p.put("queued", false);
-                        p.saveInBackground();
-                    }
+                    if(symptomList.size() != 0){
+                        for(int i = 0; i < symptomList.size(); i++){
+                            ParseObject p  = symptomList.get(i);
+                            p.put("queued", false);
+                            p.saveInBackground();
+                        }}
                     //refreshDisplay(patients);
                 }
                 else {
@@ -125,7 +126,9 @@ public class SymptomsActivity extends ActionBarActivity {
         userSymptoms.setSymptomCount();
         userSymptoms.put("queued", true);
         userSymptoms.put("comments", "");
-        userSymptoms.setSortKey(false);
+        Calendar c = Calendar.getInstance();
+        int sortKey = c.get(Calendar.SECOND);
+        userSymptoms.put("sortKey", sortKey);
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());

@@ -40,7 +40,7 @@ public class SymptomsListActivity extends ActionBarActivity {
         listSymptoms = (ListView) findViewById(R.id.listSymptoms);
 
         query = ParseQuery.getQuery("Symptoms");
-        query.orderByDescending("updatedAt"); //most recent at the top
+        query.orderByDescending("createdAt"); //most recent at the top
         query.whereEqualTo("user", ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
