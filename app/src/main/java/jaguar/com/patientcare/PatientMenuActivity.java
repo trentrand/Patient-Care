@@ -15,6 +15,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class PatientMenuActivity extends ActionBarActivity {
@@ -121,9 +122,10 @@ public class PatientMenuActivity extends ActionBarActivity {
         userSymptoms.setSymptomCount();
         userSymptoms.put("queued", true);
         userSymptoms.put("comments", "");
-        Calendar c = Calendar.getInstance();
-        int sortKey = c.get(Calendar.SECOND);
-        userSymptoms.put("sortKey", sortKey + 2000000000);
+        Date now = new Date();
+        Long unixTime = now.getTime()/1000;
+        int intUnixTime = (int) (long) unixTime;
+        userSymptoms.put("sortKey", intUnixTime + 20000);
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());

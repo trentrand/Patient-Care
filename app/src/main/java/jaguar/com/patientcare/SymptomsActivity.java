@@ -19,6 +19,7 @@ import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -111,24 +112,46 @@ public class SymptomsActivity extends ActionBarActivity {
                 }
             }
         });
+
+        int threshold = 0;
         Symptoms userSymptoms = new Symptoms();
         userSymptoms.setUser(ParseUser.getCurrentUser());
         userSymptoms.put("emergency", false);
         userSymptoms.setPainLevel((int) ratePain.getRating());
+        if(ratePain.getRating() == 4) threshold += 1000;
+        if(ratePain.getRating() == 5) threshold += 2000;
         userSymptoms.setFatigueLevel((int) rateFatigue.getRating());
+        if(rateFatigue.getRating() == 4) threshold += 1000;
+        if(rateFatigue.getRating() == 5) threshold += 2000;
         userSymptoms.setNumbnessLevel((int) rateNumbness.getRating());
+        if(rateNumbness.getRating() == 4) threshold += 1000;
+        if(rateNumbness.getRating() == 5) threshold += 2000;
         userSymptoms.setSpasticityLevel((int) rateSpasticity.getRating());
+        if(rateSpasticity.getRating() == 4) threshold += 1000;
+        if(rateSpasticity.getRating() == 5) threshold += 2000;
         userSymptoms.setVisionLevel((int) rateVision.getRating());
+        if(rateVision.getRating() == 4) threshold += 1000;
+        if(rateVision.getRating() == 5) threshold += 2000;
         userSymptoms.setDizzinessLevel((int) rateDizziness.getRating());
+        if(rateDizziness.getRating() == 4) threshold += 1000;
+        if(rateDizziness.getRating() == 5) threshold += 2000;
         userSymptoms.setBladderLevel((int) rateBladder.getRating());
+        if(rateBladder.getRating() == 4) threshold += 1000;
+        if(rateBladder.getRating() == 5) threshold += 2000;
         userSymptoms.setCognitiveLevel((int) rateCognitive.getRating());
+        if(rateCognitive.getRating() == 4) threshold += 1000;
+        if(rateCognitive.getRating() == 5) threshold += 2000;
         userSymptoms.setEmotionalLevel((int) rateEmotional.getRating());
+        if(rateEmotional.getRating() == 4) threshold += 1000;
+        if(rateEmotional.getRating() == 5) threshold += 2000;
         userSymptoms.setSymptomCount();
         userSymptoms.put("queued", true);
         userSymptoms.put("comments", "");
-        Calendar c = Calendar.getInstance();
-        int sortKey = c.get(Calendar.SECOND);
-        userSymptoms.put("sortKey", sortKey);
+
+        Date now = new Date();
+        Long unixTime = now.getTime()/1000;
+        int intUnixTime = (int) (long) unixTime;
+        userSymptoms.put("sortKey", intUnixTime + threshold);
 
         // Store the users highest symptom string in ParseUser object for use on PatientListActivity adn PatientSummaryActivity
         ParseUser.getCurrentUser().put("highestSymptom", userSymptoms.getHighestSymptom());
