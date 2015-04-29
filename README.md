@@ -3,7 +3,8 @@ __Android application to allow patients to directly communicate with their healt
 
 
 ### Version
-* __0.3 - Functional symptoms rating view implemented__
+* 1.0 - Core functionality implemented and tested
+* 0.3 - Functional symptoms rating view implemented
 * 0.2 - Functional login view implemented
 * 0.1 - Base project w/ dependencies
 
@@ -30,11 +31,6 @@ Patient Care uses the following open source projects to work properly:
 *	password: a
 
 * From the admin account new accounts of admin, doctor, or patient type can be made for further testing
-
-
-### Documentation
-
-Patient Care documentation is hosted in the wiki. If there is an inaccuracy in the documentation, please open a new issue.
 
 ### Todo's
 
